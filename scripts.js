@@ -74,11 +74,19 @@ function expenseAdd(newExpense) {
         const expenseCategory = document.createElement("span")
         expenseCategory.textContent = newExpense.category_name
 
+
         // Adiciona nome e categoria na div das informações da despesa
         expenseInfo.append(expenseName, expenseCategory)
 
+        // Cria o valor da despesa.
+        const expenseAmount = document.createElement("span")
+        expenseAmount.classList.add("expense-amount")
+        expenseAmount.innerHTML = `<small>R$</small>${newExpense.amount
+            .toUpperCase()
+            .replace("R$", "")}` //como a própria span já traz o R$, por isso vai tirar o R$ do valor formatado utiizando o replace
+
         // Adiciona as informações do ícone no item.
-        expenseItem.append(expenseIcon, expenseInfo)
+        expenseItem.append(expenseIcon, expenseInfo, expenseAmount)
 
         // Adiciona o item na lista.
         expenseList.append(expenseItem)
